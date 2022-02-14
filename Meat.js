@@ -4,20 +4,21 @@ var Endabgabe;
     class Meat extends Endabgabe.Food {
         constructor() {
             super();
-            this.position = new Endabgabe.Vector(960, 80);
+            this.positionPrep = new Endabgabe.Vector(960, 80);
             this.positionDisplay = new Endabgabe.Vector(1030, 40);
             this.capacity = 20;
+            this.maxCapacity = 20;
         }
         draw() {
             Endabgabe.crc2.save();
             Endabgabe.crc2.beginPath();
-            this.path.arc(this.position.x, this.position.y, 60, 0, 2 * Math.PI);
+            this.path.arc(this.positionPrep.x, this.positionPrep.y, 60, 0, 2 * Math.PI);
             Endabgabe.crc2.closePath();
             Endabgabe.crc2.fillStyle = "rgb(140, 60, 0)";
             Endabgabe.crc2.fill(this.path);
             Endabgabe.crc2.stroke(this.path);
             Endabgabe.crc2.fillStyle = "white";
-            Endabgabe.crc2.fillText("Fleisch", this.position.x + 30, this.position.y + 60);
+            Endabgabe.crc2.fillText("Fleisch", this.positionPrep.x + 30, this.positionPrep.y + 60);
             Endabgabe.crc2.restore();
             Endabgabe.crc2.save();
             Endabgabe.crc2.strokeStyle = "white";
@@ -38,4 +39,4 @@ var Endabgabe;
     }
     Endabgabe.Meat = Meat;
 })(Endabgabe || (Endabgabe = {}));
-//# sourceMappingURL=meat.js.map
+//# sourceMappingURL=Meat.js.map

@@ -8,6 +8,7 @@ namespace Endabgabe {
             this.positionDisplay = new Vector(1190, 150);
             this.positionMat = new Vector(120, 210);
             this.capacity = 5;
+            this.maxCapacity = 5;
         }
 
         public draw(): void {
@@ -51,7 +52,7 @@ namespace Endabgabe {
                     order.push("Salad");
                     for (let l: number = 0; l < staffs.length; l++) {
                         if (staffs[l].state == WORKSTATE.TOPPING) {
-                            staffs[l].work(this.positionPrep);
+                            // staffs[l].work(this.positionPrep);
                         }
                     }
                 }

@@ -8,6 +8,7 @@ var Endabgabe;
             this.positionDisplay = new Endabgabe.Vector(1190, 150);
             this.positionMat = new Endabgabe.Vector(120, 210);
             this.capacity = 5;
+            this.maxCapacity = 5;
         }
         draw() {
             Endabgabe.crc2.save();
@@ -47,7 +48,7 @@ var Endabgabe;
                     Endabgabe.order.push("Salad");
                     for (let l = 0; l < Endabgabe.staffs.length; l++) {
                         if (Endabgabe.staffs[l].state == Endabgabe.WORKSTATE.TOPPING) {
-                            Endabgabe.staffs[l].work(this.positionPrep);
+                            // staffs[l].work(this.positionPrep);
                         }
                     }
                 }

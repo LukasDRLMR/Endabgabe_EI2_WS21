@@ -10,32 +10,20 @@ var Endabgabe;
         GAMESTATE[GAMESTATE["INIT"] = 0] = "INIT";
         GAMESTATE[GAMESTATE["PLAY"] = 1] = "PLAY";
     })(GAMESTATE = Endabgabe.GAMESTATE || (Endabgabe.GAMESTATE = {}));
-    let WORKSTATE;
-    (function (WORKSTATE) {
-        WORKSTATE[WORKSTATE["CASH"] = 0] = "CASH";
-        WORKSTATE[WORKSTATE["TOPPING"] = 1] = "TOPPING";
-        WORKSTATE[WORKSTATE["PAUSE"] = 2] = "PAUSE";
-        WORKSTATE[WORKSTATE["PREPARATION"] = 3] = "PREPARATION";
-    })(WORKSTATE = Endabgabe.WORKSTATE || (Endabgabe.WORKSTATE = {}));
-    let STAFFSTATE;
-    (function (STAFFSTATE) {
-        STAFFSTATE[STAFFSTATE["WORKING"] = 0] = "WORKING";
-        STAFFSTATE[STAFFSTATE["SLEEPING"] = 1] = "SLEEPING";
-        STAFFSTATE[STAFFSTATE["STRESSED"] = 2] = "STRESSED";
-    })(STAFFSTATE = Endabgabe.STAFFSTATE || (Endabgabe.STAFFSTATE = {}));
     window.addEventListener("load", handleLoad);
     let canvas = document.querySelector("canvas");
     Endabgabe.crc2 = canvas.getContext("2d");
     let imgData;
     let staffCount = 3;
     Endabgabe.staffs = [];
+    Endabgabe.customers = [];
     Endabgabe.ingredients = [];
     Endabgabe.order = [];
     function handleLoad() {
         drawBG();
         InitEverything();
         Action();
-        window.setInterval(update, 3);
+        window.setInterval(update, 30);
     }
     function drawBG() {
         Endabgabe.crc2.fillStyle = "rgb(201, 142, 99)";
@@ -89,6 +77,10 @@ var Endabgabe;
             let staff = new Endabgabe.Staff;
             Endabgabe.staffs.push(staff);
         }
+        for (let i = 1; i <= staffCount; i++) {
+            let customer = new Endabgabe.Customer;
+            Endabgabe.customers.push(customer);
+        }
     }
     function Action() {
         for (let item of Endabgabe.ingredients) {
@@ -118,6 +110,10 @@ var Endabgabe;
             staff.move(1 / 50);
             staff.work();
             staff.draw();
+        }
+        for (let customer of Endabgabe.customers) {
+            customer.move(1 / 50);
+            customer.draw();
         }
     }
 })(Endabgabe || (Endabgabe = {}));
